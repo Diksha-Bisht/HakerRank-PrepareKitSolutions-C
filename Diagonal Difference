@@ -19,6 +19,8 @@ The left-to-right diagonal = 1+5+9 =15. The right to left diagonal = 3+5+9 = 17.
 ****Sample Output
 15
 
+NOTE:
+Only the main function and called function are displayed other inbuild hackerrank compiler code is not included for a better understanding of the solution.
 */
 
 int diagonalDifference(int arr_rows, int arr_columns, int** arr) {
