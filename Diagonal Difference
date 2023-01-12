@@ -1,0 +1,66 @@
+/*
+__________PROBLEM STATEMENT__________
+Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+
+*****For example******
+the square matrix arr is shown below:
+
+1 2 3
+4 5 6
+9 8 9  
+The left-to-right diagonal = 1+5+9 =15. The right to left diagonal = 3+5+9 = 17. Their absolute difference is |15-17|=2.
+
+****Sample Input
+
+3
+11 2 4
+4 5 6
+10 8 -12
+****Sample Output
+15
+
+*/
+
+int diagonalDifference(int arr_rows, int arr_columns, int** arr) {
+    int d1=0, d2=0, x;
+    for(int i=0;i<arr_rows;i++ ){
+        d1=d1+arr[i][i];
+        d2=d2+arr[i][arr_columns-(i+1)];
+    }
+    if(d1>=d2){
+        return d1-d2;
+    }
+    else{
+        return d2-d1;
+    }
+    
+}
+
+int main()
+{
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+    int n = parse_int(ltrim(rtrim(readline())));
+
+    int** arr = malloc(n * sizeof(int*));
+
+    for (int i = 0; i < n; i++) {
+        *(arr + i) = malloc(n * (sizeof(int)));
+
+        char** arr_item_temp = split_string(rtrim(readline()));
+
+        for (int j = 0; j < n; j++) {
+            int arr_item = parse_int(*(arr_item_temp + j));
+
+            *(*(arr + i) + j) = arr_item;
+        }
+    }
+
+    int result = diagonalDifference(n, n, arr);
+
+    fprintf(fptr, "%d\n", result);
+
+    fclose(fptr);
+
+    return 0;
+}
