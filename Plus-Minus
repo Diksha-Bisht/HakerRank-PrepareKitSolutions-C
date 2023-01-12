@@ -18,7 +18,8 @@ There are n=5 elements, two positive, two negative and one zero. Their ratios ar
 0.333333
 0.166667
 
-
+NOTE:
+Only the main function and called function are displayed other inbuild hackerrank compiler code is not included for a better understanding of the solution.
 */
 
 void plusMinus(int arr_count, int* arr) {
