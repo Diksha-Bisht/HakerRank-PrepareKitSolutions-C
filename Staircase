@@ -1,0 +1,51 @@
+/*
+Staircase detail
+
+This is a staircase of size :n
+
+   #
+  ##
+ ###
+####
+Its base and height are both equal to n. It is drawn using # symbols and spaces. The last line is not preceded by any spaces.
+Write a program that prints a staircase of size n.
+
+****Sample Input
+6 
+
+****Sample Output
+
+     #
+    ##
+   ###
+  ####
+ #####
+######
+
+NOTE:
+Only the main function and called function are displayed other inbuild hackerrank compiler code is not included for a better understanding of the solution.
+*/
+
+void staircase(int n) {
+    int arr[n][n];
+    for(int i=0;i<n;i++){
+        int x=n-1-i;
+        for(int j=0;j<x;j++){
+            printf(" ");
+        }
+        for(int j=n-1;j>=x;j--){
+            printf("#");
+        }
+        
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int n = parse_int(ltrim(rtrim(readline())));
+
+    staircase(n);
+
+    return 0;
+}
