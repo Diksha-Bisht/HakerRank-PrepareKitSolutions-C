@@ -1,0 +1,64 @@
+/*
+_____PROBLEM STATEMENT_____
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+
+Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+- 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+
+****Example****
+s='12:01:00PM'
+Return '12:01:00'.
+s='12:01:00AM'
+Return '00:01:00'.
+
+****Sample Input
+07:05:45PM
+
+****Sample Output
+19:05:45
+
+NOTE:
+Only the main function and called function are displayed other inbuild hackerrank compiler code is not included for a better understanding of the solution.
+*/
+
+char* timeConversion(char* s) {
+    if(s[8]=='P'){
+        if(s[0]=='1' && s[1]=='2'){
+            s[8]='\0';
+            return s;
+        }
+        else{
+            s[0]++;
+            s[1]+=2;
+            s[8]='\0';
+            return s;
+        }
+    }
+    else{
+        if(s[0]=='1' && s[1]=='2'){
+            s[0]='0';
+            s[1]='0';
+            s[8]='\0';
+            return s;
+        }
+        else{
+            s[8]='\0';
+            return s;
+        }
+    }
+}
+
+int main()
+{
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+    char* s = readline();
+
+    char* result = timeConversion(s);
+
+    fprintf(fptr, "%s\n", result);
+
+    fclose(fptr);
+
+    return 0;
+}
