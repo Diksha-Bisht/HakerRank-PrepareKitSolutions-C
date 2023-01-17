@@ -1,0 +1,95 @@
+/*
+Sam's house has an apple tree and an orange tree that yield an abundance of fruit. 
+Using the information given below, determine the number of apples and oranges that land on Sam's house.
+countApplesAndOranges has the following parameter(s):
+s: integer, starting point of Sam's house location.
+t: integer, ending location of Sam's house location.
+a: integer, location of the Apple tree.
+b: integer, location of the Orange tree.
+apples: integer array, distances at which each apple falls from the tree.
+oranges: integer array, distances at which each orange falls from the tree.
+
+****Input Format
+The first line contains two space-separated integers denoting the respective values of s and t.
+The second line contains two space-separated integers denoting the respective values of a and b.
+The third line contains two space-separated integers denoting the respective values of no. of apples(n) and no. of oranges(m).
+The fourth line contains n space-separated integers denoting the respective distances that each apple falls from point a.
+The fifth line contains m space-separated integers denoting the respective distances that each orange falls from point b.
+
+****Sample Input
+7 11
+5 15
+3 2
+-2 2 1
+5 -6
+
+****Sample Output
+1
+1
+
+NOTE:
+Only the main function and called function are displayed other inbuild hackerrank compiler code is not included for a better understanding of the solution.
+*/
+
+void countApplesAndOranges(int s, int t, int a, int b, int apples_count, int* apples, int oranges_count, int* oranges) 
+{
+    int apple, orange, ac=0, oc=0;
+    for(int i=0; i<apples_count; i++){
+        apple=apples[i]+a;
+        if(apple>=s && apple<=t){
+            ac++;
+        }
+    }
+    for(int i=0; i<oranges_count; i++){
+        orange=oranges[i]+b;
+        if(orange>=s && orange<=t){
+            oc++;
+        }
+    }
+    printf("%d\n%d",ac,oc);
+}
+
+int main()
+{
+    char** first_multiple_input = split_string(rtrim(readline()));
+
+    int s = parse_int(*(first_multiple_input + 0));
+
+    int t = parse_int(*(first_multiple_input + 1));
+
+    char** second_multiple_input = split_string(rtrim(readline()));
+
+    int a = parse_int(*(second_multiple_input + 0));
+
+    int b = parse_int(*(second_multiple_input + 1));
+
+    char** third_multiple_input = split_string(rtrim(readline()));
+
+    int m = parse_int(*(third_multiple_input + 0));
+
+    int n = parse_int(*(third_multiple_input + 1));
+
+    char** apples_temp = split_string(rtrim(readline()));
+
+    int* apples = malloc(m * sizeof(int));
+
+    for (int i = 0; i < m; i++) {
+        int apples_item = parse_int(*(apples_temp + i));
+
+        *(apples + i) = apples_item;
+    }
+
+    char** oranges_temp = split_string(rtrim(readline()));
+
+    int* oranges = malloc(n * sizeof(int));
+
+    for (int i = 0; i < n; i++) {
+        int oranges_item = parse_int(*(oranges_temp + i));
+
+        *(oranges + i) = oranges_item;
+    }
+
+    countApplesAndOranges(s, t, a, b, m, apples, n, oranges);
+
+    return 0;
+}
